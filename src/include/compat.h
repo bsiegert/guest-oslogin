@@ -15,7 +15,7 @@
 #ifndef OSLOGIN_COMPAT_H
 #define OSLOGIN_COMPAT_H
 
-#ifdef __FreeBSD__
+#if defined(__FreeBSD__) || defined(__NetBSD__)
 
 #include <nsswitch.h>
 
@@ -50,7 +50,7 @@ nss_module_register (const char *name, unsigned int *size,      \
 #define PAM_SYSLOG(pamh, ...) syslog(__VA_ARGS__)
 #define DEFAULT_SHELL "/bin/sh"
 
-#else /* __FreeBSD__ */
+#else /* __FreeBSD__ || __NetBSD__ */
 
 #include <security/pam_ext.h>
 
